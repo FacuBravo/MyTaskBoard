@@ -1,1 +1,49 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+:root {
+    --translucent: #00000033;
+    --black: #030616;
+    --white: #F8FAFC;
+    --grey_200: #E3E8EF;
+    --grey_500: #97A3B6;
+    --yellow: #F5D565;
+    --orange_200: #F5E8D5;
+    --orange_500: #E9A23B;
+    --green_200: #A0ECB1;
+    --green_500: #32D657;
+    --red_200: #F7D4D3;
+    --red_500: #DD524C;
+    --blue_500: #3662E3;
+
+    --font_outfit: "Outfit", serif;
+
+    --size_xxl: 40px;
+    --size_xl: 20px;
+    --size_l: 16px;
+    --size_m: 14px;
+    --size_s: 12px;
+
+    --weight_light: 300;
+    --weight_regular: 400;
+    --weight_medium: 500;
+    --weight_semibold: 600;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: none;
+    box-sizing: border-box;
+    font-family: var(--font_outfit);
+    color: var(--black);
+}
+
+body {
+    background-color: var(--white);
+}
+
+button {
+    cursor: pointer;
+}

@@ -1,0 +1,7 @@
+<ul>
+    <app-btn-add-task (eventShowTaskEdit)="showTaskEdit()"></app-btn-add-task>
+</ul>
+
+@if (showTaskedit) {
+    <app-task-edit (eventCloseTaskEdit)="closeTaskEdit()"></app-task-edit>
+}

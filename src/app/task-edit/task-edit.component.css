@@ -1,0 +1,42 @@
+.backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--translucent);
+}
+
+.edit_task_container {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 500px;
+    height: calc(100vh - 24px);
+    background-color: var(--white);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h2 {
+    font-size: var(--size_xl);
+    font-weight: var(--weight_medium);
+}
+
+.close_section_edit_task {
+    padding: 6px;
+    background-color: transparent;
+    border: 1px solid var(--grey_500);
+    border-radius: 8px;
+    display: grid;
+    place-content: center;
+}

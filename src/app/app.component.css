@@ -1,0 +1,8 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin: 32px auto;
+    width: 50vw;
+    gap: 16px;
+}

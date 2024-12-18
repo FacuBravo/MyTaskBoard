@@ -1,0 +1,45 @@
+form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(9, auto);
+    row-gap: 8px;
+    column-gap: 16px;
+}
+
+label, input, ul {
+    grid-column: span 2;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+}
+
+.status_button {
+    padding: 2px;
+    font-size: var(--size_m);
+    font-weight: var(--weight_medium);
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-radius: 10px;
+    border: 2px solid var(--grey_200);
+}
+
+.status_button > img {
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.img_status_progress {
+    background-color: var(--orange_500);
+}
+
+.img_status_done {
+    background-color: var(--green_500);
+}
+
+.img_status_wont {
+    background-color: var(--red_500);
+}

@@ -1,0 +1,12 @@
+<section class="backdrop" (click)="closeTaskEdit()"></section>
+
+<section class="edit_task_container">
+    <header>
+        <h2>Task details</h2>
+        <button class="close_section_edit_task" (click)="closeTaskEdit()">
+            <img src="../../assets/img/close_ring_duotone-1.svg" alt="Close">
+        </button>
+    </header>
+
+    <app-form-task-edit></app-form-task-edit>
+</section>

@@ -51,35 +51,20 @@ export class TasksComponent {
 
   async getBoard() {
     const ip = await this.getIp()
-
-    if (this.idBoard) {
-      try {
-        this.board = await this.boardsService.getBoard(this.idBoard)
-
-        if (this.board.ip != ip) {
-          this.router.navigateByUrl('/board')
-          return
-        }
-
-        this.getTasks()
-        this.ready = true
-      } catch (error) {
-        console.error(error)
-      }
-
-      return
-    }
-
-    this.board = await this.boardsService.getBoardByIp(ip)
+    await this.boardsService.getBoardByIp(ip)
+    this.boardsService.board.subscribe(e => this.board = e)
 
     if (!this.board) {
-      this.board = await this.boardsService.setBoard({
+      await this.boardsService.setBoard({
         name: 'My Task Board',
         description: 'Tasks to keep organised',
         ip: ip
       })
       await this.loadDefaultTasks()
     }
+
+    this.getTasks()
+    this.ready = true
 
     this.router.navigate(['/board', this.board.id])
   }

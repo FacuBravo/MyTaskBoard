@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Task } from '../types/Task';
 
@@ -10,8 +10,10 @@ import { Task } from '../types/Task';
   styleUrl: './form-task-edit.component.css'
 })
 export class FormTaskEditComponent {
-  @Input() task?: Task
-
+  @Input() task: Task | null
+  @Input() nextId: number
+  @Output() eventSaveTask = new EventEmitter<Task>()
+  
   constructor(private fb: FormBuilder) { }
 
   formTask = this.fb.group({
@@ -22,10 +24,6 @@ export class FormTaskEditComponent {
   })
 
   ngOnInit() {
-    this.loadPreData()
-  }
-
-  loadPreData() {
     if (this.task) {
       this.formTask.setValue({
         name: this.task.name,
@@ -34,7 +32,7 @@ export class FormTaskEditComponent {
         status: this.task.status
       })
 
-      const iconBtn = document.querySelector('#icon_btn_' + this.task.icon) as HTMLButtonElement
+      const iconBtn = document.querySelector('#icon_btn_' + this.task.icon.split('_')[0]) as HTMLButtonElement
       if (iconBtn) {
         iconBtn.style.backgroundColor = 'var(--yellow_500)'
       }
@@ -66,5 +64,21 @@ export class FormTaskEditComponent {
     const clickedBtn = (e.target as HTMLElement).closest('.status_button') as HTMLButtonElement
     clickedBtn.classList.add('status_selected')
     this.formTask.get('status')?.setValue(status)
+  }
+
+  saveTask() {
+    const formValue = this.formTask.value
+
+    if (formValue.name && formValue.icon && formValue.status) {
+      const taskData: Task = {
+        id: this.task?.id || this.nextId,
+        name: formValue.name,
+        description: formValue.description || '',
+        icon: formValue.icon,
+        status: formValue.status
+      }
+
+      this.eventSaveTask.emit(taskData)
+    }
   }
 }

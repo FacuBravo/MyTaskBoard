@@ -1,1 +1,16 @@
-<p>task works!</p>
+<li [className]="task.status" (click)="editTask()">
+    <div class="icon">{{ task.icon.split('_')[1] }}</div>
+    <h3>{{ task.name }}</h3>
+
+    @switch (task.status) {
+        @case ('done') {
+            <img class="status" src="../../assets/img/Done_round_duotone.svg" alt="Task status">
+        } @case ('progress') {
+            <img class="status" src="../../assets/img/Time_atack_duotone.svg" alt="Task status">
+        } @case ('wontDo') {
+            <img class="status" src="../../assets/img/close_ring_duotone.svg" alt="Task status">
+        }
+    }
+    
+    <p>{{ task.description }}</p>
+</li>

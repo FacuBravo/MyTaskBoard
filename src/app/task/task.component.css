@@ -1,0 +1,63 @@
+li {
+    display: grid;
+    grid-template-columns: 40px auto 40px;
+    align-items: center;
+    column-gap: 20px;
+    padding: 16px;
+    width: 100%;
+    border-radius: 12px;
+    cursor: pointer;
+    user-select: none;
+}
+
+li > h3 {
+    font-size: var(--size_xl);
+    font-weight: var(--weight_semibold);
+}
+
+li > p {
+    grid-column: 2 / 3;
+    font-size: var(--size_l);
+    font-weight: var(--weight_light);
+}
+
+.done {
+    background-color: var(--green_200);
+}
+
+.progress {
+    background-color: var(--yellow_500);
+}
+
+.wontDo {
+    background-color: var(--red_200);
+}
+
+.icon {
+    background-color: var(--white);
+    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-content: center;
+}
+
+.status {
+    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    background-color: var(--white);
+}
+
+.done .status {
+    background-color: var(--green_500);
+}
+
+.wontDo .status {
+    background-color: var(--red_500);
+}
+
+.progress .status {
+    background-color: var(--orange_500);
+}

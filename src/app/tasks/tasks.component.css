@@ -1,4 +1,7 @@
 ul {
     list-style: none;
     width: 50vw;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Task } from '../types/Task';
 
 @Component({
   selector: 'app-task',
@@ -8,5 +9,10 @@ import { Component } from '@angular/core';
   styleUrl: './task.component.css'
 })
 export class TaskComponent {
+  @Input() task: Task
+  @Output() eventEditTask = new EventEmitter<Task>()
 
+  editTask() {
+    this.eventEditTask.emit(this.task)
+  }
 }

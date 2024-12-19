@@ -1,7 +1,11 @@
 <ul>
+    @for (task of tasks; track task.id) {
+    <app-task [task]="task" (eventEditTask)="showTaskEdit($event)"></app-task>
+    }
+
     <app-btn-add-task (eventShowTaskEdit)="showTaskEdit()"></app-btn-add-task>
 </ul>
 
 @if (showTaskedit) {
-    <app-task-edit (eventCloseTaskEdit)="closeTaskEdit()"></app-task-edit>
+<app-task-edit (eventSaveTask)="saveTask($event)" (eventCloseTaskEdit)="closeTaskEdit()" [task]="currentTask" [nextId]="nextId"></app-task-edit>
 }

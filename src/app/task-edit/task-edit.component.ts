@@ -11,9 +11,16 @@ import { FormTaskEditComponent } from "../form-task-edit/form-task-edit.componen
 })
 export class TaskEditComponent {
   @Output() eventCloseTaskEdit = new EventEmitter()
-  @Input() task?: Task
+  @Output() eventSaveTask = new EventEmitter<Task>()
+  @Input() task: Task | null
+  @Input() nextId: number
 
   closeTaskEdit() {
     this.eventCloseTaskEdit.emit()
+  }
+
+  saveTask(nTask: Task) {
+    this.eventSaveTask.emit(nTask)
+    this.closeTaskEdit()
   }
 }

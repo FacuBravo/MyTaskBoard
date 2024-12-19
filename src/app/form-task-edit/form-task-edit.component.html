@@ -9,27 +9,27 @@
         <label>Icon</label>
         <ul>
             <li>
-                <button class="icon_btn" id="icon_btn_work" (click)="selectIcon($event, 'work')">👨‍💻</button>
+                <button class="icon_btn" id="icon_btn_work" (click)="selectIcon($event, 'work_👨‍💻')">👨‍💻</button>
             </li>
     
             <li>
-                <button class="icon_btn" id="icon_btn_thought" (click)="selectIcon($event, 'thought')">💭</button>
+                <button class="icon_btn" id="icon_btn_thought" (click)="selectIcon($event, 'thought_💭')">💭</button>
             </li>
     
             <li>
-                <button class="icon_btn" id="icon_btn_break" (click)="selectIcon($event, 'break')">☕</button>
+                <button class="icon_btn" id="icon_btn_break" (click)="selectIcon($event, 'break_☕')">☕</button>
             </li>
     
             <li>
-                <button class="icon_btn" id="icon_btn_strong_work" (click)="selectIcon($event, 'strong_work')">🏋️‍♀️</button>
+                <button class="icon_btn" id="icon_btn_strongWork" (click)="selectIcon($event, 'strongWork_🏋️‍♀️')">🏋️‍♀️</button>
             </li>
     
             <li>
-                <button class="icon_btn" id="icon_btn_reading" (click)="selectIcon($event, 'reading')">📚</button>
+                <button class="icon_btn" id="icon_btn_reading" (click)="selectIcon($event, 'reading_📚')">📚</button>
             </li>
     
             <li>
-                <button class="icon_btn" id="icon_btn_time" (click)="selectIcon($event, 'time')">⏰</button>
+                <button class="icon_btn" id="icon_btn_time" (click)="selectIcon($event, 'time_⏰')">⏰</button>
             </li>
         </ul>
     
@@ -59,7 +59,7 @@
             <img src="../../assets/img/Trash.svg" alt="Delete icon">
         </button>
 
-        <button class="save_btn" [disabled]="formTask.invalid">
+        <button class="save_btn" (click)="saveTask()" [disabled]="formTask.invalid">
             Save
             <img src="../../assets/img/Done_round.svg" alt="Check icon">
         </button>

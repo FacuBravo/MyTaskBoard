@@ -1,3 +1,4 @@
+@if (ready) {
 <ul>
     @for (task of tasks; track task.id) {
     <app-task [task]="task" (eventEditTask)="showTaskEdit($event)"></app-task>
@@ -7,5 +8,9 @@
 </ul>
 
 @if (showTaskedit) {
-<app-task-edit (eventSaveTask)="saveTask($event)" (eventDeleteTask)="deleteTask($event)" (eventCloseTaskEdit)="closeTaskEdit()" [task]="currentTask" [nextId]="nextId"></app-task-edit>
+<app-task-edit (eventSaveTask)="saveTask($event)" (eventDeleteTask)="deleteTask($event)"
+    (eventCloseTaskEdit)="closeTaskEdit()" [task]="currentTask" [nextId]="nextId"></app-task-edit>
+}
+} @else {
+<h1>Loading...</h1>
 }

@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { BtnAddTaskComponent } from "../btn-add-task/btn-add-task.component";
 import { TaskEditComponent } from '../task-edit/task-edit.component';
 import { Task } from '../types/Task';
 import { TaskComponent } from "../task/task.component";
+import { Board } from '../types/Board';
+import { BoardsService } from '../Services/boards.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-tasks',
@@ -15,6 +18,16 @@ export class TasksComponent {
   showTaskedit = false
   currentTask: Task | null
   nextId: number = 5
+  board: Board
+  ready = false
+  @Input('id_board') idBoard: number
+
+  constructor(
+    private boardsService: BoardsService,
+    private router: Router
+  ) {
+    this.getData()
+  }
 
   tasks: Task[] = [
     {
@@ -56,7 +69,7 @@ export class TasksComponent {
   saveTask(task: Task) {
     this.closeTaskEdit()
     const index = this.tasks.findIndex(e => e.id == task.id)
-    
+
     if (index != -1) {
       this.tasks[index] = task
     } else {
@@ -68,9 +81,47 @@ export class TasksComponent {
   deleteTask(id: number) {
     this.closeTaskEdit()
     const index = this.tasks.findIndex(e => e.id == id)
-    
+
     if (index != -1) {
       this.tasks.splice(index, 1)
     }
+  }
+
+  async getIp() {
+    let res = await fetch('https://api.ipify.org/?format=json')
+    let json = await res.json()
+    return json.ip
+  }
+
+  async getData() {
+    const ip = await this.getIp()
+
+    if (this.idBoard) {
+      try {
+        const boardByUrl = await this.boardsService.getBoard(this.idBoard)
+
+        if (boardByUrl.ip != ip) {
+          this.router.navigateByUrl('/board')
+          return
+        }
+  
+        this.ready = true
+      } catch (error) {
+        console.error(error)
+      }
+
+      return
+    }
+
+    const boards = await this.boardsService.getBoards()
+    const index = boards.findIndex(e => e.ip == ip)
+
+    if (index == -1) {
+      this.board = await this.boardsService.setBoard({ ip: ip })
+    } else {
+      this.board = boards[index]
+    }
+
+    this.router.navigate(['/board', this.board.id])
   }
 }

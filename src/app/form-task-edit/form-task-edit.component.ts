@@ -57,14 +57,20 @@ export class FormTaskEditComponent {
 
   selectStatus(e: Event, status: string) {
     e.preventDefault()
+    const clickedBtn = (e.target as HTMLElement).closest('.status_button') as HTMLButtonElement
+    const selected = clickedBtn.classList.contains('status_selected')
 
     document.querySelectorAll('.status_button').forEach(el => {
       el.classList.remove('status_selected')
     })
 
-    const clickedBtn = (e.target as HTMLElement).closest('.status_button') as HTMLButtonElement
-    clickedBtn.classList.add('status_selected')
-    this.formTask.get('status')?.setValue(status)
+    if (!selected) {
+      clickedBtn.classList.add('status_selected')
+      this.formTask.get('status')?.setValue(status)
+    } else {
+      this.formTask.get('status')?.setValue('')
+    }
+    
   }
 
   saveTask(e: Event) {

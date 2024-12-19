@@ -1,4 +1,17 @@
+:host {
+    height: 100%;
+}
+
 form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.form_content {
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(9, auto);
@@ -6,13 +19,78 @@ form {
     column-gap: 16px;
 }
 
-label, input, ul {
+.action_btns {
+    display: flex;
+    gap: 16px;
+}
+
+.action_btns button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: var(--size_s);
+    font-weight: var(--weight_medium);
+    border-radius: 50px;
+    padding: 8px 24px;
+    color: var(--white);
+}
+
+.action_btns button > img {
+    height: 16px;
+}
+
+.delete_btn {
+    background-color: var(--grey_500);
+}
+
+.save_btn {
+    background-color: var(--blue_500);
+}
+
+label, input, ul, textarea {
     grid-column: span 2;
+}
+
+label {
+    color: var(--grey_500);
+    font-size: var(--size_s);
+    font-weight: var(--weight_medium);
+}
+
+input, textarea {
+    font-size: var(--size_m);
+    font-weight: var(--weight_regular);
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 2px solid var(--grey_200);
+    margin-bottom: 8px;
+}
+
+input:focus, textarea:focus {
+    border-color: var(--blue_500);
+}
+
+input::placeholder, textarea::placeholder {
+    color: var(--grey_500);
+}
+
+.description_input {
+    height: 200px;
+    resize: none;
 }
 
 ul {
     list-style: none;
     display: flex;
+    gap: 12px;
+}
+
+li > button {
+    padding: 8px;
+    border-radius: 8px;
+    font-size: 20px;
+    background-color: var(--grey_200);
 }
 
 .status_button {
@@ -27,9 +105,32 @@ ul {
     border: 2px solid var(--grey_200);
 }
 
-.status_button > img {
+.img_status {
     padding: 8px;
     border-radius: 8px;
+}
+
+.status_selected {
+    border-color: var(--blue_500);
+    position: relative;
+}
+
+.img_status_check {
+    width: 16px;
+    height: 16px;
+    padding: 2px;
+    background-color: var(--blue_500);
+    border-radius: 50%;
+    position: absolute;
+    right: 16px;
+}
+
+.status_button > .img_status_check {
+    display: none;
+}
+
+.status_selected > .img_status_check {
+    display: block;
 }
 
 .img_status_progress {

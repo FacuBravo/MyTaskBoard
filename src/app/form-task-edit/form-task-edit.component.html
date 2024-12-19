@@ -1,33 +1,67 @@
 <form>
-    <label for="name">Task name</label>
-    <input type="text" name="name" placeholder="Enter the task name">
+    <div class="form_content">
+        <label for="name">Task name</label>
+        <input type="text" name="name" placeholder="Enter the task name" autocomplete="off">
+    
+        <label for="description">Description</label>
+        <textarea class="description_input" name="description" placeholder="Enter a short description" ></textarea>
+    
+        <label>Icon</label>
+        <ul>
+            <li>
+                <button id="work" class="icon_btn" (click)="selectIcon($event)">👨‍💻</button>
+            </li>
+    
+            <li>
+                <button id="thought" class="icon_btn" (click)="selectIcon($event)">💭</button>
+            </li>
+    
+            <li>
+                <button id="break" class="icon_btn" (click)="selectIcon($event)">☕</button>
+            </li>
+    
+            <li>
+                <button id="strong_work" class="icon_btn" (click)="selectIcon($event)">🏋️‍♀️</button>
+            </li>
+    
+            <li>
+                <button id="reading" class="icon_btn" (click)="selectIcon($event)">📚</button>
+            </li>
+    
+            <li>
+                <button id="time" class="icon_btn" (click)="selectIcon($event)">⏰</button>
+            </li>
+        </ul>
+    
+        <label>Status</label>
+        <button class="status_button" (click)="selectStatus($event)">
+            <img class="img_status img_status_progress" src="../../assets/img/Time_atack_duotone.svg" alt="Status in progress">
+            In Progress
+            <img class="img_status_check" id="status_progress" src="../../assets/img/Done_round.svg" alt="Check">
+        </button>
+    
+        <button class="status_button" (click)="selectStatus($event)">
+            <img class="img_status img_status_done" src="../../assets/img/Done_round_duotone.svg" alt="Status done">
+            Completed
+            <img class="img_status_check" id="status_done" src="../../assets/img/Done_round.svg" alt="Check">
+        </button>
+    
+        <button class="status_button" (click)="selectStatus($event)">
+            <img class="img_status img_status_wont" src="../../assets/img/close_ring_duotone.svg" alt="Status wont do">
+            Won't do
+            <img class="img_status_check" id="status_wont" src="../../assets/img/Done_round.svg" alt="Check">
+        </button>
+    </div>
 
-    <label for="description">Description</label>
-    <input type="text" name="description" placeholder="Enter a short description">
+    <div class="action_btns">
+        <button class="delete_btn">
+            Delete
+            <img src="../../assets/img/Trash.svg" alt="Delete icon">
+        </button>
 
-    <label>Icon</label>
-    <ul>
-        <li>👨‍💻</li>
-        <li>💭</li>
-        <li>☕</li>
-        <li>🏋️‍♀️</li>
-        <li>📚</li>
-        <li>⏰</li>
-    </ul>
-
-    <label>Status</label>
-    <button class="status_button">
-        <img class="img_status_progress" src="../../assets/img/Time_atack_duotone.svg" alt="">
-        In Progress
-    </button>
-
-    <button class="status_button">
-        <img class="img_status_done" src="../../assets/img/Done_round.svg" alt="">
-        Completed
-    </button>
-
-    <button class="status_button">
-        <img class="img_status_wont" src="../../assets/img/close_ring_duotone.svg" alt="">
-        Won't do
-    </button>
+        <button class="save_btn">
+            Save
+            <img src="../../assets/img/Done_round.svg" alt="Check icon">
+        </button>
+    </div>
 </form>

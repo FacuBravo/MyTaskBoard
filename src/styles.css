@@ -7,7 +7,7 @@
     --white: #F8FAFC;
     --grey_200: #E3E8EF;
     --grey_500: #97A3B6;
-    --yellow: #F5D565;
+    --yellow_500: #F5D565;
     --orange_200: #F5E8D5;
     --orange_500: #E9A23B;
     --green_200: #A0ECB1;
@@ -34,7 +34,7 @@
     margin: 0;
     padding: 0;
     border: 0;
-    outline: none;
+    outline: 0;
     box-sizing: border-box;
     font-family: var(--font_outfit);
     color: var(--black);

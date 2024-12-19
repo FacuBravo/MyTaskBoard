@@ -11,7 +11,7 @@
     position: absolute;
     top: 12px;
     right: 12px;
-    width: 500px;
+    width: 50%;
     height: calc(100vh - 24px);
     background-color: var(--white);
     border-radius: 12px;

@@ -1,52 +1,52 @@
-<form>
+<form [formGroup]="formTask">
     <div class="form_content">
         <label for="name">Task name</label>
-        <input type="text" name="name" placeholder="Enter the task name" autocomplete="off">
+        <input formControlName="name" type="text" name="name" placeholder="Enter the task name" autocomplete="off">
     
         <label for="description">Description</label>
-        <textarea class="description_input" name="description" placeholder="Enter a short description" ></textarea>
+        <textarea formControlName="description" class="description_input" name="description" placeholder="Enter a short description" ></textarea>
     
         <label>Icon</label>
         <ul>
             <li>
-                <button id="work" class="icon_btn" (click)="selectIcon($event)">👨‍💻</button>
+                <button class="icon_btn" id="icon_btn_work" (click)="selectIcon($event, 'work')">👨‍💻</button>
             </li>
     
             <li>
-                <button id="thought" class="icon_btn" (click)="selectIcon($event)">💭</button>
+                <button class="icon_btn" id="icon_btn_thought" (click)="selectIcon($event, 'thought')">💭</button>
             </li>
     
             <li>
-                <button id="break" class="icon_btn" (click)="selectIcon($event)">☕</button>
+                <button class="icon_btn" id="icon_btn_break" (click)="selectIcon($event, 'break')">☕</button>
             </li>
     
             <li>
-                <button id="strong_work" class="icon_btn" (click)="selectIcon($event)">🏋️‍♀️</button>
+                <button class="icon_btn" id="icon_btn_strong_work" (click)="selectIcon($event, 'strong_work')">🏋️‍♀️</button>
             </li>
     
             <li>
-                <button id="reading" class="icon_btn" (click)="selectIcon($event)">📚</button>
+                <button class="icon_btn" id="icon_btn_reading" (click)="selectIcon($event, 'reading')">📚</button>
             </li>
     
             <li>
-                <button id="time" class="icon_btn" (click)="selectIcon($event)">⏰</button>
+                <button class="icon_btn" id="icon_btn_time" (click)="selectIcon($event, 'time')">⏰</button>
             </li>
         </ul>
     
         <label>Status</label>
-        <button class="status_button" (click)="selectStatus($event)">
+        <button class="status_button" id="status_btn_progress" (click)="selectStatus($event, 'progress')">
             <img class="img_status img_status_progress" src="../../assets/img/Time_atack_duotone.svg" alt="Status in progress">
             In Progress
             <img class="img_status_check" id="status_progress" src="../../assets/img/Done_round.svg" alt="Check">
         </button>
     
-        <button class="status_button" (click)="selectStatus($event)">
+        <button class="status_button" id="status_btn_done" (click)="selectStatus($event, 'done')">
             <img class="img_status img_status_done" src="../../assets/img/Done_round_duotone.svg" alt="Status done">
             Completed
             <img class="img_status_check" id="status_done" src="../../assets/img/Done_round.svg" alt="Check">
         </button>
     
-        <button class="status_button" (click)="selectStatus($event)">
+        <button class="status_button" id="status_btn_wontDo" (click)="selectStatus($event, 'wontDo')">
             <img class="img_status img_status_wont" src="../../assets/img/close_ring_duotone.svg" alt="Status wont do">
             Won't do
             <img class="img_status_check" id="status_wont" src="../../assets/img/Done_round.svg" alt="Check">
@@ -59,7 +59,7 @@
             <img src="../../assets/img/Trash.svg" alt="Delete icon">
         </button>
 
-        <button class="save_btn">
+        <button class="save_btn" [disabled]="formTask.invalid">
             Save
             <img src="../../assets/img/Done_round.svg" alt="Check icon">
         </button>

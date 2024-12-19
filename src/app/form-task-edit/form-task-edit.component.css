@@ -10,6 +10,11 @@ form {
     align-items: end;
 }
 
+button:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
 .form_content {
     width: 100%;
     display: grid;

@@ -73,6 +73,7 @@ export class TasksComponent {
 
     if (!this.board) {
       this.board = await this.boardsService.setBoard({ ip: ip })
+      await this.loadDefaultTasks()
     }
 
     this.router.navigate(['/board', this.board.id])
@@ -82,6 +83,40 @@ export class TasksComponent {
     this.tasksService.getTasks(this.board.id)
     this.tasksService.tasks.subscribe(t => {
       this.tasks = t
+    })
+  }
+
+  async loadDefaultTasks() {
+    await this.tasksService.addTask({
+      name: 'Task in Progress',
+      icon: 'time_⏰',
+      description: '',
+      board_id: this.board.id,
+      status: 'progress'
+    })
+
+    await this.tasksService.addTask({
+      name: 'Task Completed',
+      icon: 'strongWork_🏋️‍♀️',
+      description: '',
+      board_id: this.board.id,
+      status: 'done'
+    })
+
+    await this.tasksService.addTask({
+      name: 'Task Won’t Do',
+      icon: 'break_☕',
+      description: '',
+      board_id: this.board.id,
+      status: 'wontDo'
+    })
+
+    await this.tasksService.addTask({
+      name: 'Task To Do',
+      icon: 'reading_📚',
+      description: 'Work on a Challenge on devChallenges.io, learn TypeScript.',
+      board_id: this.board.id,
+      status: ''
     })
   }
 }

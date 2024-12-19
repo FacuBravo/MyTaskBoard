@@ -1,4 +1,4 @@
-<form [formGroup]="formTask">
+<form [formGroup]="formTask" (submit)="saveTask($event)">
     <div class="form_content">
         <label for="name">Task name</label>
         <input formControlName="name" type="text" name="name" placeholder="Enter the task name" autocomplete="off">
@@ -54,12 +54,14 @@
     </div>
 
     <div class="action_btns">
-        <button class="delete_btn">
-            Delete
-            <img src="../../assets/img/Trash.svg" alt="Delete icon">
-        </button>
+        @if (task) {
+            <button class="delete_btn" (click)="deleteTask($event)">
+                Delete
+                <img src="../../assets/img/Trash.svg" alt="Delete icon">
+            </button>
+        }
 
-        <button class="save_btn" (click)="saveTask()" [disabled]="formTask.invalid">
+        <button class="save_btn" [disabled]="formTask.invalid">
             Save
             <img src="../../assets/img/Done_round.svg" alt="Check icon">
         </button>

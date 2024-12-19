@@ -7,5 +7,5 @@
 </ul>
 
 @if (showTaskedit) {
-<app-task-edit (eventSaveTask)="saveTask($event)" (eventCloseTaskEdit)="closeTaskEdit()" [task]="currentTask" [nextId]="nextId"></app-task-edit>
+<app-task-edit (eventSaveTask)="saveTask($event)" (eventDeleteTask)="deleteTask($event)" (eventCloseTaskEdit)="closeTaskEdit()" [task]="currentTask" [nextId]="nextId"></app-task-edit>
 }

@@ -13,6 +13,7 @@ export class FormTaskEditComponent {
   @Input() task: Task | null
   @Input() nextId: number
   @Output() eventSaveTask = new EventEmitter<Task>()
+  @Output() eventDeleteTask = new EventEmitter()
   
   constructor(private fb: FormBuilder) { }
 
@@ -66,7 +67,8 @@ export class FormTaskEditComponent {
     this.formTask.get('status')?.setValue(status)
   }
 
-  saveTask() {
+  saveTask(e: Event) {
+    e.preventDefault()
     const formValue = this.formTask.value
 
     if (formValue.name && formValue.icon && formValue.status) {
@@ -80,5 +82,10 @@ export class FormTaskEditComponent {
 
       this.eventSaveTask.emit(taskData)
     }
+  }
+
+  deleteTask(e: Event) {
+    e.preventDefault()
+    this.eventDeleteTask.emit()
   }
 }

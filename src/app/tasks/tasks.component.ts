@@ -48,6 +48,7 @@ export class TasksComponent {
   }
 
   saveTask(task: Task) {
+    this.closeTaskEdit()
     const index = this.tasks.findIndex(e => e.id == task.id)
     
     if (index != -1) {
@@ -55,6 +56,15 @@ export class TasksComponent {
     } else {
       this.nextId = task.id + 1
       this.tasks.push(task)
+    }
+  }
+
+  deleteTask(id: number) {
+    this.closeTaskEdit()
+    const index = this.tasks.findIndex(e => e.id == id)
+    
+    if (index != -1) {
+      this.tasks.splice(index, 1)
     }
   }
 }

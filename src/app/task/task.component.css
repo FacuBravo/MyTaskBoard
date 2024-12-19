@@ -1,6 +1,7 @@
 li {
     display: grid;
     grid-template-columns: 40px auto 40px;
+    background-color: var(--grey_200);
     align-items: center;
     column-gap: 20px;
     padding: 16px;

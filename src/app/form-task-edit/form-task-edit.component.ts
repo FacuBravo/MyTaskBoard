@@ -21,7 +21,7 @@ export class FormTaskEditComponent {
     name: ['', Validators.required],
     description: [''],
     icon: ['', Validators.required],
-    status: ['', Validators.required]
+    status: ['']
   })
 
   ngOnInit() {
@@ -30,7 +30,7 @@ export class FormTaskEditComponent {
         name: this.task.name,
         description: this.task.description || '',
         icon: this.task.icon,
-        status: this.task.status
+        status: this.task.status || ''
       })
 
       const iconBtn = document.querySelector('#icon_btn_' + this.task.icon.split('_')[0]) as HTMLButtonElement
@@ -71,13 +71,13 @@ export class FormTaskEditComponent {
     e.preventDefault()
     const formValue = this.formTask.value
 
-    if (formValue.name && formValue.icon && formValue.status) {
+    if (formValue.name && formValue.icon) {
       const taskData: Task = {
         id: this.task?.id || this.nextId,
         name: formValue.name,
         description: formValue.description || '',
         icon: formValue.icon,
-        status: formValue.status
+        status: formValue.status || ''
       }
 
       this.eventSaveTask.emit(taskData)

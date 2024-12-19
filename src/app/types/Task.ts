@@ -3,5 +3,5 @@ export interface Task {
     name: string
     description?: string
     icon: string
-    status: string
+    status?: string
 }

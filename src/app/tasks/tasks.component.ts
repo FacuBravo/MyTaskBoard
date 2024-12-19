@@ -14,7 +14,7 @@ import { TaskComponent } from "../task/task.component";
 export class TasksComponent {
   showTaskedit = false
   currentTask: Task | null
-  nextId: number = 4
+  nextId: number = 5
 
   tasks: Task[] = [
     {
@@ -34,6 +34,12 @@ export class TasksComponent {
       name: `Task Won't Do`,
       icon: 'break_☕',
       status: 'wontDo'
+    },
+    {
+      id: 4,
+      name: `Task To Do`,
+      description: 'Work on a Challenge on devChallenges.io, learn TypeScript',
+      icon: 'reading_📚'
     }
   ]
 

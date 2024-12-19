@@ -5,13 +5,14 @@ import { Task } from '../types/Task';
 import { TaskComponent } from "../task/task.component";
 import { Board } from '../types/Board';
 import { BoardsService } from '../Services/boards.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { TasksService } from '../Services/tasks.service';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-tasks',
   standalone: true,
-  imports: [BtnAddTaskComponent, TaskEditComponent, TaskComponent],
+  imports: [BtnAddTaskComponent, TaskEditComponent, TaskComponent, HeaderComponent],
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.css'
 })
@@ -72,7 +73,11 @@ export class TasksComponent {
     this.board = await this.boardsService.getBoardByIp(ip)
 
     if (!this.board) {
-      this.board = await this.boardsService.setBoard({ ip: ip })
+      this.board = await this.boardsService.setBoard({
+        name: 'My Task Board',
+        description: 'Tasks to keep organised',
+        ip: ip
+      })
       await this.loadDefaultTasks()
     }
 

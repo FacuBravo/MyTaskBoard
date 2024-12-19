@@ -8,9 +8,9 @@
 </ul>
 
 @if (showTaskedit) {
-<app-task-edit (eventSaveTask)="saveTask($event)" (eventDeleteTask)="deleteTask($event)"
-    (eventCloseTaskEdit)="closeTaskEdit()" [task]="currentTask" [nextId]="nextId"></app-task-edit>
+<app-task-edit (eventCloseTaskEdit)="closeTaskEdit()" [task]="currentTask" [board]="board"></app-task-edit>
 }
+
 } @else {
 <h1>Loading...</h1>
 }

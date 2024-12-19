@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Task } from '../types/Task';
 import { FormTaskEditComponent } from "../form-task-edit/form-task-edit.component";
+import { Board } from '../types/Board';
 
 @Component({
   selector: 'app-task-edit',
@@ -11,22 +12,10 @@ import { FormTaskEditComponent } from "../form-task-edit/form-task-edit.componen
 })
 export class TaskEditComponent {
   @Output() eventCloseTaskEdit = new EventEmitter()
-  @Output() eventSaveTask = new EventEmitter<Task>()
-  @Output() eventDeleteTask = new EventEmitter<number>()
   @Input() task: Task | null
-  @Input() nextId: number
+  @Input() board: Board
 
   closeTaskEdit() {
     this.eventCloseTaskEdit.emit()
-  }
-
-  saveTask(nTask: Task) {
-    this.eventSaveTask.emit(nTask)
-  }
-
-  deleteTask() {
-    if (this.task) {
-      this.eventDeleteTask.emit(this.task.id)
-    }
   }
 }

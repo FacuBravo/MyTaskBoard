@@ -8,5 +8,5 @@
         </button>
     </header>
 
-    <app-form-task-edit [task]="task" (eventSaveTask)="saveTask($event)" (eventDeleteTask)="deleteTask()" [nextId]="nextId"></app-form-task-edit>
+    <app-form-task-edit [board]="board" [task]="task" (eventCloseTaskEdit)="closeTaskEdit()"></app-form-task-edit>
 </section>

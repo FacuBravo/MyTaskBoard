@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Task } from '../types/Task';
+import { Board } from '../types/Board';
+import { TasksService } from '../Services/tasks.service';
 
 @Component({
   selector: 'app-form-task-edit',
@@ -11,11 +13,13 @@ import { Task } from '../types/Task';
 })
 export class FormTaskEditComponent {
   @Input() task: Task | null
-  @Input() nextId: number
-  @Output() eventSaveTask = new EventEmitter<Task>()
-  @Output() eventDeleteTask = new EventEmitter()
+  @Input() board: Board
+  @Output() eventCloseTaskEdit = new EventEmitter()
   
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private tasksService: TasksService
+  ) { }
 
   formTask = this.fb.group({
     name: ['', Validators.required],
@@ -78,20 +82,30 @@ export class FormTaskEditComponent {
     const formValue = this.formTask.value
 
     if (formValue.name && formValue.icon) {
-      const taskData: Task = {
-        id: this.task?.id || this.nextId,
+      let taskData: Task = {
         name: formValue.name,
         description: formValue.description || '',
         icon: formValue.icon,
-        status: formValue.status || ''
+        status: formValue.status || '',
+        board_id: this.board.id
       }
 
-      this.eventSaveTask.emit(taskData)
+      if (this.task?.id) {
+        this.tasksService.updateTask(this.task.id, taskData)
+      } else {
+        this.tasksService.addTask(taskData)
+      }
+
+      this.eventCloseTaskEdit.emit()
     }
   }
 
   deleteTask(e: Event) {
     e.preventDefault()
-    this.eventDeleteTask.emit()
+    
+    if (this.task?.id) {
+      this.tasksService.deleteTask(this.task.id)
+      this.eventCloseTaskEdit.emit()
+    }
   }
 }

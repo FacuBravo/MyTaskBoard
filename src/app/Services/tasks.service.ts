@@ -13,8 +13,11 @@ export class TasksService {
 
   async getTasks(boardId: number) {
     const res = await fetch(URL + '?board_id=' + boardId)
-    this._tasks = await res.json()
-    this.tasks.next(this._tasks)
+    
+    if (res.ok) {
+      this._tasks = await res.json()
+      this.tasks.next(this._tasks)
+    }
   }
 
   async addTask(task: Task) {
@@ -47,7 +50,7 @@ export class TasksService {
   }
 
   async deleteTask(id: number) {
-    const res = await fetch(URL + '/' + id , {
+    const res = await fetch(URL + '/' + id, {
       method: 'DELETE'
     })
 

@@ -70,7 +70,7 @@ export class TasksComponent {
     }
 
     this.board = await this.boardsService.getBoardByIp(ip)
-    
+
     if (!this.board) {
       this.board = await this.boardsService.setBoard({ ip: ip })
     }

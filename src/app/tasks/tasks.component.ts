@@ -52,9 +52,11 @@ export class TasksComponent {
   async getBoard() {
     const ip = await this.getIp()
     await this.boardsService.getBoardByIp(ip)
-    this.boardsService.board.subscribe(e => this.board = e)
+    this.boardsService.board.subscribe(e => 
+      this.board = e
+    )
 
-    if (!this.board) {
+    if (!this.board.id) {
       await this.boardsService.setBoard({
         name: 'My Task Board',
         description: 'Tasks to keep organised',
